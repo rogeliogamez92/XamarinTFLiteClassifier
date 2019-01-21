@@ -31,6 +31,16 @@ namespace XamarinTFLite
             Test();
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            if (classifier != null)
+            {
+                classifier.Dispose();
+            }
+        }
+
         public void LoadModel()
         {
             var fileDescriptor = Assets.OpenFd("Model.tflite");
